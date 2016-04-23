@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-$script = <<SCRIPT
+$script = <<'SCRIPT'
 perl -i -pe "s/^php_admin_value\[open_basedir\].+$//" /etc/php5/fpm/pool.d/www.conf
 service php5-fpm restart
 SCRIPT
@@ -14,6 +14,8 @@ Vagrant.configure(2) do |config|
     vb.customize ["modifyvm", :id, "--paravirtprovider", "kvm"]
 #    vb.customize ["modifyvm", :id, "--memory", "1024"]
   end
+
+  config.vm.provision "shell", inline: $script
 
   config.hostmanager.enabled = true
   config.hostmanager.manage_host = true
