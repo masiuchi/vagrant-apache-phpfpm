@@ -8,7 +8,7 @@ SCRIPT
 
 Vagrant.configure(2) do |config|
   config.vm.box = "spicyweb/apache-phpfpm"
-  config.vm.hostname = "phpfpm.local"
+  config.vm.hostname = "apache-phpfpm.local"
   config.vm.network "private_network", ip: "192.168.33.154"
   config.vm.provider "virtualbox" do |vb|
     vb.customize ["modifyvm", :id, "--paravirtprovider", "kvm"]
